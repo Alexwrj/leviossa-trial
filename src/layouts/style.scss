@@ -1,0 +1,23 @@
+* {
+  font-family: "Montserrat" sans-serif;
+}
+
+body {
+  background: #bfbfbf;
+}
+
+.container-xl {
+  min-width: 1280px;
+  padding: 51px 70px 51px 56px;
+  box-sizing: border-box;
+  background: #dfdfdf;
+}
+
+.col {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.btn {
+  border-radius: 0;
+}
