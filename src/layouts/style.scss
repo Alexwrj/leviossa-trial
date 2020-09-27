@@ -1,23 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,200&display=swap');
+@import '../style/_constants.scss';
 
 * {
   font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  background: #bfbfbf;
-}
-
-button {
-  background: none;
-  border: none;
+  background: $gray;
 }
 
 .container-xl {
   min-width: 1280px;
   padding: 51px 70px 51px 56px;
   box-sizing: border-box;
-  background: #dfdfdf;
+  background: $gray-light;
 }
 
 .col {
@@ -27,4 +23,27 @@ button {
 
 .btn {
   border-radius: 0;
+  font-size: 12px;
+
+  &-primary {
+    background-color: $blue;
+
+    &:hover {
+      background-color: $blue-light;
+    }
+    &:active {
+      background-color: $blue-dark;
+    }
+  }
+
+  &-light {
+    background-color: $gray-light;
+
+    &:hover {
+      background-color: $gray-lighter;
+    }
+    &:active {
+      background-color: $gray;
+    }
+  }
 }

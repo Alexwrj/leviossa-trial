@@ -1,0 +1,52 @@
+@import '../../../../style/_constants.scss';
+
+.filter {
+  background: white;
+  display: block;
+  box-sizing: border-box;
+  padding: 20px 27px 20px 23px;
+  font-size: 11px;
+
+  h5 {
+    font-size: 14px;
+    margin-top: 18px;
+    margin-bottom: 14px;
+  }
+
+  .custom-checkbox {
+    input[type=checkbox] {
+      display: none
+    }
+
+    input:not(:disabled):not(:checked)+span:hover::before {
+      background: $gray-lightest;
+    }
+
+    input:focus+span::before {
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+
+    input:checked+span::before {
+      background-color: $blue;
+      border-color: $blue;
+      background-image: url('checkbox-tick.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    span::before {
+      content: '';
+      width: 13px;
+      height: 13px;
+      border: 1px solid $gray;
+      display: inline-block;
+      margin-right: 6px;
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  &-actions {
+    width: stretch;
+  }
+}

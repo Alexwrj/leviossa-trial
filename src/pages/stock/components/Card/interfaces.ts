@@ -3,6 +3,10 @@ export interface ICardParams {
   value: string;
 }
 
+export interface IAvailability {
+  availability: boolean;
+}
+
 export interface ICard {
   id: number;
   link: string;

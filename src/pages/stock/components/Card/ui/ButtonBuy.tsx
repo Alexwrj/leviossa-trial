@@ -14,7 +14,7 @@ const CartIcon: FC = () => (
 const ButtonBuy: FC = () => (
   <Button variant="primary">
     <CartIcon />
-    Купить
+    <span>Купить</span>
   </Button>
 );
 

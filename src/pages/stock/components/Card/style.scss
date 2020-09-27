@@ -1,4 +1,7 @@
+@import '../../../../style/_constants.scss';
+
 .card {
+  margin-bottom: 25px;
   &-img-top {
     padding-top: 46px;
     padding-left: 23px;
@@ -14,14 +17,14 @@
     margin-bottom: 18px;
     font-size: 16px;
     line-height: 20px;
-    color: #333333;
+    color: $gray-darkest;
   }
 
   &-text {
-    font-size: 13px;
+    font-size: 11px;
     margin-top: 0;
     margin-bottom: 8px;
-    color: #7e7e7e;
+    color: $gray-dark;    
   }
 
   &-actions {
@@ -43,7 +46,7 @@
   }
 
   &-available {
-    color: #0081CC;
+    color: $blue;
     font-size: 12px;
     line-height: 15px;
 

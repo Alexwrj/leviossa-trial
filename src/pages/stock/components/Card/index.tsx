@@ -1,23 +1,29 @@
 import React, { FC } from 'react';
-import { Card as BootstrapCard, Button } from 'react-bootstrap';
-import { ICard } from './interfaces';
+import { Card as BootstrapCard } from 'react-bootstrap';
+import { ICard, IAvailability } from './interfaces';
 import ButtonBuy from './ui/ButtonBuy';
 import ButtonLike from './ui/ButtonLike';
 import ButtonCompare from './ui/ButtonCompare';
 import './style.scss';
+
+const Availability: FC<IAvailability> = ({ availability }) => (
+  <>
+    {availability ? (
+      <div className="card-available">
+        <span>В наличии</span>
+      </div>
+    ) : (
+      <p>&nbsp;</p>
+    )}
+  </>
+);
 
 const Card: FC<ICard> = ({ imgUrl, title, params, availability }) => {
   return (
     <BootstrapCard>
       <BootstrapCard.Img variant="top" src={imgUrl} />
       <BootstrapCard.Body>
-        {availability ? (
-          <div className="card-available">
-            <span>В наличии</span>
-          </div>
-        ) : (
-          <p>&nbsp;</p>
-        )}
+        <Availability availability={availability} />
         <BootstrapCard.Title>{title}</BootstrapCard.Title>
         {params.map(param => (
           <BootstrapCard.Text>
