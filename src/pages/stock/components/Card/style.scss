@@ -1,5 +1,55 @@
-.card-img-top {
-  padding-top: 46px;
-  padding-left: 23px;
-  padding-right: 23px;
+.card {
+  &-img-top {
+    padding-top: 46px;
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+
+  &-body {
+    padding: 20px 23px 32px 23px;
+  }
+
+  &-title {
+    margin-top: 4px;
+    margin-bottom: 18px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+  }
+
+  &-text {
+    font-size: 13px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #7e7e7e;
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 55px;
+
+    &__icons {
+      a {
+        transition: 0.3s ease;
+        margin-left: 13px;
+        &:hover {
+          opacity: 0.4;
+        }
+      }
+      display: inline-block;
+    }
+  }
+
+  &-available {
+    color: #0081CC;
+    font-size: 12px;
+    line-height: 15px;
+
+    &:before {
+      content: url('tick.svg');
+      margin-right: 6px;
+    }
+  }
 }

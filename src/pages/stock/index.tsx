@@ -9,7 +9,7 @@ const fakeData: Array<ICard> = [
     id: 1,
     link: "#",
     code: 34534345,
-    imgUrl: "https://miro.medium.com/max/1200/1*P_1D58qHvIFNlpmMZe4nuA.png",
+    imgUrl: "product.jpg",
     availability: true,
     title: "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
     params: [
@@ -37,7 +37,7 @@ const fakeData: Array<ICard> = [
     "id": 2,
     "link": "#",
     "code": 34534345,
-    imgUrl: "https://miro.medium.com/max/1200/1*P_1D58qHvIFNlpmMZe4nuA.png",
+    imgUrl: "product.jpg",
     "availability": true,
     "title": "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
     "params": [
@@ -65,7 +65,7 @@ const fakeData: Array<ICard> = [
     "id": 3,
     "link": "#",
     "code": 34534345,
-    imgUrl: "https://miro.medium.com/max/1200/1*P_1D58qHvIFNlpmMZe4nuA.png",
+    imgUrl: "product.jpg",
     "availability": true,
     "title": "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
     "params": [
