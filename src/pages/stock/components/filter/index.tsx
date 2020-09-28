@@ -24,7 +24,7 @@ const filterProps: Array<IFilterProps> = [
 ];
 
 const Filter: FC = () => {
-  const handleSubmit = (event: FormEvent<HtmlFormElement>) => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     console.log('Submited');
   }
@@ -37,9 +37,9 @@ const Filter: FC = () => {
       </div>
       <h5>Тип камеры</h5>
       <Row className="justify-content-xl-center">
-        {filterProps.map(prop => (
+        {filterProps.map((prop, index) => (
           <Col xl="6">
-            <Checkbox {...prop}/>
+            <Checkbox {...prop} key={index} />
             </Col>
         ))}
       </Row>

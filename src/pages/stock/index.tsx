@@ -1,162 +1,36 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import MainLayout from 'layouts/mainLayout';
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Card from 'pages/stock/components/card';
 import Filter from 'pages/stock/components/filter';
-import { ICard } from './components/card/interfaces';
-
-const fakeData: Array<ICard> = [
-  {
-    id: 1,
-    link: "#",
-    code: 34534345,
-    imgUrl: "product.jpg",
-    availability: true,
-    title: "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
-    params: [
-      {
-        "name": "Физический размер",
-        "value": "23.2 x 15.2 мм"
-      },
-      {
-        "name": "Диафрагма",
-        "value": "CMOS"
-      },
-      {
-        "name": "Формат записи",
-        "value": "RAW, JPEG, MP4 и другие"
-      },
-      {
-        "name": "Фокусное расстояние",
-        "value": "18-55 мм"
-      }
-    ],
-    inFav: true,
-    inComparsion: false
-  },
-  {
-    "id": 2,
-    "link": "#",
-    "code": 34534345,
-    imgUrl: "product.jpg",
-    "availability": true,
-    "title": "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
-    "params": [
-      {
-        "name": "Физический размер",
-        "value": "23.2 x 15.2 мм"
-      },
-      {
-        "name": "Диафрагма",
-        "value": "CMOS"
-      },
-      {
-        "name": "Формат записи",
-        "value": "RAW, JPEG, MP4 и другие"
-      },
-      {
-        "name": "Фокусное расстояние",
-        "value": "18-55 мм"
-      }
-    ],
-    "inFav": false,
-    "inComparsion": false
-  },
-  {
-    "id": 3,
-    "link": "#",
-    "code": 34534345,
-    imgUrl: "product.jpg",
-    "availability": true,
-    "title": "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
-    "params": [
-      {
-        "name": "Физический размер",
-        "value": "23.2 x 15.2 мм"
-      },
-      {
-        "name": "Диафрагма",
-        "value": "CMOS"
-      },
-      {
-        "name": "Формат записи",
-        "value": "RAW, JPEG, MP4 и другие"
-      },
-      {
-        "name": "Фокусное расстояние",
-        "value": "18-55 мм"
-      }
-    ],
-    "inFav": false,
-    "inComparsion": false
-  },
-  {
-    "id": 4,
-    "link": "#",
-    "code": 34534345,
-    imgUrl: "product.jpg",
-    "availability": true,
-    "title": "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
-    "params": [
-      {
-        "name": "Физический размер",
-        "value": "23.2 x 15.2 мм"
-      },
-      {
-        "name": "Диафрагма",
-        "value": "CMOS"
-      },
-      {
-        "name": "Формат записи",
-        "value": "RAW, JPEG, MP4 и другие"
-      },
-      {
-        "name": "Фокусное расстояние",
-        "value": "18-55 мм"
-      }
-    ],
-    "inFav": false,
-    "inComparsion": false
-  },
-  {
-    "id": 3,
-    "link": "#",
-    "code": 34534345,
-    imgUrl: "product.jpg",
-    "availability": true,
-    "title": "Canon PowerShot SX400 IS с улучшенной матрицей и объективом",
-    "params": [
-      {
-        "name": "Физический размер",
-        "value": "23.2 x 15.2 мм"
-      },
-      {
-        "name": "Диафрагма",
-        "value": "CMOS"
-      },
-      {
-        "name": "Формат записи",
-        "value": "RAW, JPEG, MP4 и другие"
-      },
-      {
-        "name": "Фокусное расстояние",
-        "value": "18-55 мм"
-      }
-    ],
-    "inFav": false,
-    "inComparsion": false
-  },
-]
+import { IStore } from 'redux/interfaces';
+import { productsRequest } from 'redux/stock/actions';
 
 const Stock: FC = () => {
+  const dispatch = useDispatch();
+  const {
+    success,
+    status,
+    isLoading,
+    data: {
+      message,
+      products,
+    }
+  } = useSelector((store: IStore) => store.stockReducer);
+
+  useEffect(() => {
+    dispatch(productsRequest());
+  }, []);
+
   return(
     <MainLayout>
       <Row className="justify-content-xl-center">
         <Col xl="9">
           <Row>
-            {fakeData.map(data => (
+            {products && products.map(product => (
               <Col xl="4">
-                <Card {...data} />
+                <Card {...product} key={product.id} />
               </Col>
             ))}
           </Row>
