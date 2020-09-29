@@ -30,9 +30,9 @@ export const productsFail = (error: IStock) => ({
   payload: { error },
 });
 
-export const filterRequest = (filter: string) => ({
+export const filterRequest = (filters: Array<string>) => ({
   type: types.FILTER_REQUEST,
-  payload: { filter },
+  payload: { filters },
 });
 
 export const filterSuccess = (response: IStock) => ({

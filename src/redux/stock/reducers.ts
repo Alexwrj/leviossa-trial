@@ -5,6 +5,7 @@ import { IStock, IType } from './interfaces';
 const initialState: IStock = {
   success: false,
   isLoading: false,
+  error: '',
   status: '',
   data: { 
     products: [],

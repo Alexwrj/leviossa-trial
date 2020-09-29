@@ -5,20 +5,22 @@ import {
   productsFail,
   favoriteSuccess,
   favoriteFail,
+  filterSuccess,
+  filterFail,
 } from './actions';
 import { put, call, takeEvery } from 'redux-saga/effects';
 import { SagaIterator } from "redux-saga";
 
-interface IFavorite { 
-  payload: {
-    id: number;
-  }
+interface IPayload { 
   type: string;
+  payload: any;
 }
 
 const fetchItems = () => axios.get('https://my-json-server.typicode.com/aero-frontend/test-task/PRODUCTS_SUCCESS');
 
 const addToFavorite = () => axios.get('https://my-json-server.typicode.com/aero-frontend/test-task/FAVORITE_SUCCESS');
+
+const filterItems = () => axios.get('https://my-json-server.typicode.com/aero-frontend/test-task/FILTER_SUCCESS');
 
 function *fetchItemsAsync(): SagaIterator {
   try {
@@ -29,7 +31,7 @@ function *fetchItemsAsync(): SagaIterator {
   }
 }
 
-function *addToFavoriteAsync({ payload: { id } }: IFavorite): SagaIterator {
+function *addToFavoriteAsync({ payload: { id } }: IPayload): SagaIterator {
   try {
     const { data } = yield call(addToFavorite);
     yield put(favoriteSuccess(id, data));
@@ -38,9 +40,27 @@ function *addToFavoriteAsync({ payload: { id } }: IFavorite): SagaIterator {
   }
 }
 
+function *filterItemsAsync({ payload: { filters } }: IPayload): SagaIterator {
+  try {
+    let fetchedData = [];
+    if (filters.length) {
+      const { data } = yield call(filterItems);
+      fetchedData = data;
+    } else {
+      const { data } = yield call(fetchItems);
+      fetchedData = data;
+    }
+
+    yield put(filterSuccess(fetchedData));
+  } catch (error) {
+    yield put(filterFail(error));
+  }
+}
+
 function *stockSaga(): SagaIterator {
   yield takeEvery(types.PRODUCTS_REQUEST, fetchItemsAsync);
-  yield takeEvery<IFavorite>(types.FAVORITE_REQUEST, addToFavoriteAsync);
+  yield takeEvery<IPayload>(types.FAVORITE_REQUEST, addToFavoriteAsync);
+  yield takeEvery(types.FILTER_REQUEST, filterItemsAsync);
 }
 
 export default stockSaga;

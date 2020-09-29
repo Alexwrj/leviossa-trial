@@ -6,6 +6,7 @@ export interface IStock {
   success: boolean;
   status: string;
   isLoading?: boolean;
+  error: string;
   data: {
     message?: string;
     products: Array<ICard>;

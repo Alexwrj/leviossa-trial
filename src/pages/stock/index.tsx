@@ -13,6 +13,7 @@ const Stock: FC = () => {
     success,
     status,
     isLoading,
+    error,
     data: {
       message,
       products,
@@ -22,6 +23,12 @@ const Stock: FC = () => {
   useEffect(() => {
     dispatch(productsRequest());
   }, []);
+
+  useEffect(() => {
+    if (error) {
+      console.error(error);
+    }
+  }, [error]);
 
   return(
     <MainLayout>
