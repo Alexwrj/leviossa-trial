@@ -1,13 +1,14 @@
 import * as types from './constants';
 import { IStock } from './interfaces';
 
-export const favoriteRequest = () => ({
+export const favoriteRequest = (id: number) => ({
   type: types.FAVORITE_REQUEST,
+  payload: { id },
 });
 
-export const favoriteSuccess = (response: IStock) => ({
+export const favoriteSuccess = (id: number, response: IStock) => ({
   type: types.FAVORITE_SUCCESS,
-  payload: { response },
+  payload: { id, response },
 });
 
 export const favoriteFail = (error: IStock) => ({
@@ -29,8 +30,9 @@ export const productsFail = (error: IStock) => ({
   payload: { error },
 });
 
-export const filterRequest = () => ({
+export const filterRequest = (filter: string) => ({
   type: types.FILTER_REQUEST,
+  payload: { filter },
 });
 
 export const filterSuccess = (response: IStock) => ({

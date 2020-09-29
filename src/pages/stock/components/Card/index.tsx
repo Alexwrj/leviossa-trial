@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEvent } from 'react';
+import { useDispatch } from 'react-redux';
+import { favoriteRequest } from 'redux/stock/actions';
 import { Card as BootstrapCard } from 'react-bootstrap';
 import { ICard, IAvailability } from './interfaces';
 import ButtonBuy from './ui/ButtonBuy';
@@ -18,7 +20,21 @@ const Availability: FC<IAvailability> = ({ availability }) => (
   </>
 );
 
-const Card: FC<ICard> = ({ imgUrl, title, params, availability }) => {
+const Card: FC<ICard> = ({ 
+  id,
+  imgUrl,
+  title,
+  params,
+  availability,
+  inFav,
+}) => {
+  const dispatch = useDispatch();
+
+  const handleAddToFavorite = (event: MouseEvent) => {
+    event.preventDefault();
+    dispatch(favoriteRequest(id));
+  }
+
   return (
     <BootstrapCard>
       <BootstrapCard.Img variant="top" src={imgUrl} />
@@ -35,7 +51,7 @@ const Card: FC<ICard> = ({ imgUrl, title, params, availability }) => {
         <div className="card-actions">
           <ButtonBuy />
           <div className="card-actions__icons">
-            <ButtonLike />
+            <ButtonLike inFav={inFav} handleClick={handleAddToFavorite} />
             <ButtonCompare />
           </div>
         </div>

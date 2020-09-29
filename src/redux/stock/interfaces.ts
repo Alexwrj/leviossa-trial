@@ -8,7 +8,8 @@ export interface IStock {
   isLoading?: boolean;
   data: {
     message?: string;
-    products?: Array<ICard>;
+    products: Array<ICard>;
+    inFav: boolean;
   }
 };
 
@@ -16,5 +17,6 @@ export interface IType {
   type: string;
   payload: { 
     response: IStock;
+    id?: number;
   }
 }
