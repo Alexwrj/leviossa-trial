@@ -10,19 +10,15 @@ import { productsRequest } from 'redux/stock/actions';
 const Stock: FC = () => {
   const dispatch = useDispatch();
   const {
-    success,
-    status,
-    isLoading,
     error,
     data: {
-      message,
       products,
     }
   } = useSelector((store: IStore) => store.stockReducer);
 
   useEffect(() => {
     dispatch(productsRequest());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (error) {

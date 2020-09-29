@@ -5,9 +5,13 @@ interface ICheckbox extends IFilterProps {
   setFilters: Function;
 }
 
-const Checkbox: FC<ICheckbox> = ({ label, value, setFilters }) => {
+const Checkbox: FC<ICheckbox> = ({ 
+  label,
+  value,
+  setFilters,
+}) => {
   const [checked, setChecked] = useState<boolean>(false);
-
+  
   const handleChange = () => {
     if (!checked) {
       setFilters((filters: Array<string>) => [...filters, value]);

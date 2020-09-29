@@ -20,11 +20,11 @@ const LikeIconActive: FC = () => (
 const ButtonLike: FC<IButtonLike> = ({ inFav, handleClick }) => (
   <>
     {inFav ? (
-      <a href="#" onClick={handleClick}>
+      <a href="/#" onClick={handleClick}>
         <LikeIconActive />
       </a>
     ): (
-      <a href="#" onClick={handleClick}>
+      <a href="/#" onClick={handleClick}>
         <LikeIconInactive />
       </a>
     )}
